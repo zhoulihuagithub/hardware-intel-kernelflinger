@@ -106,13 +106,15 @@ ifneq ($(TARGET_UEFI_ARCH),x86_64)
     LOCAL_SRC_FILES += pae.c
 endif
 
-ifeq ($(TARGET_BOOT_SIGNER),)
-    LOCAL_SRC_FILES += \
+#ifeq ($(TARGET_BOOT_SIGNER),)
+#    LOCAL_SRC_FILES += \
 	aosp_sig.c \
 	asn1.c
-else
-    LOCAL_SRC_FILES += $(TARGET_BOOT_SIGNER)_sig.c
-endif
+#else
+#    LOCAL_SRC_FILES += $(TARGET_BOOT_SIGNER)_sig.c
+#endif
+
+LOCAL_SRC_FILES += ias_sig.c
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../include/libkernelflinger \
 		$(res_intermediates)
